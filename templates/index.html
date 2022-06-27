@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>倉頡字典 Cangjie Dictionary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>倉頡字典 Cangjie Dictionary</h1>
+    <br></br>
+    <form method="post">
+    <div class="input-group", style="width:720px">
+        <input name="search_query" type="search" class="form-control rounded" placeholder="Type something..." aria-label="Search" aria-describedby="search-addon" />
+        <input type="submit" class="btn btn-primary" value="Search"/>
+    </div>
+    </form>
+    {% if (result| length) > 0 %}
+      <br></br>
+      <h3>Input: {{ search_query }}</h3>
+      <br></br>
+      <table class="table table-hover", style="width:720px">
+        <thead>
+          <tr>
+            <th scope="col">Word</th>
+            <th scope="col">Code</th>
+          </tr>
+          <tbody>
+            {% for i in range(search_query| length) %}
+              <tr>
+                <td>{{ search_query[i] }}</td>
+                <td>{{ result[i] }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </thead>
+      </table>
+    {% else %}
+      <br></br>
+      <h5>Search queryis empty.</h5>
+      <h5>Please try again.</h5>
+      <br></br>
+    {% endif %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  </body>
+</html>
